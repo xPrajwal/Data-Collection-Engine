@@ -16,8 +16,8 @@ import json
 import requests
 
 #Configuring connection to DynamoDB
-dynamodb_session = Session(aws_access_key_id='AKIARSDWX2GVK4H5YQU2',
-		  aws_secret_access_key='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',
+dynamodb_session = Session(aws_access_key_id='A*****',
+		  aws_secret_access_key='******',
 		  region_name='ap-southeast-1')
 dynamodb = dynamodb_session.resource('dynamodb')
 
