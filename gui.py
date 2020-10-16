@@ -14,10 +14,11 @@ from boto3.dynamodb.conditions import Key, Attr
 import OCR
 import json
 import requests
+import config
 
 #Configuring connection to DynamoDB
-dynamodb_session = Session(aws_access_key_id='A*****',
-		  aws_secret_access_key='******',
+dynamodb_session = Session(aws_access_key_id= config.access_key_id,
+		  aws_secret_access_key= config.secret_access_key,
 		  region_name='ap-southeast-1')
 dynamodb = dynamodb_session.resource('dynamodb')
 
@@ -241,7 +242,7 @@ def upload_file(usr_name):
 		(file_name1, file_extension1)  = os.path.splitext(file_name)
 		#Opening the accepted image file using PIL and saving it to local folder
 		img = Image.open(file)
-		save_folder = '/home/prajwal/Documents/Codes/DataScience/dce-aws/uploaded_images/'
+		save_folder = os.getcwd() + '/uploaded_images/'
 
 		dest_add = save_folder + file_name
 		#Convert Image file to .PNG if its JPG 
