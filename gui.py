@@ -11,7 +11,7 @@ import boto3
 from boto3 import dynamodb 
 from boto3.session import Session
 from boto3.dynamodb.conditions import Key, Attr
-import OCR
+import ocr
 import json
 import requests
 import config
@@ -216,7 +216,7 @@ def view_content(usr_name):
 		view_window.resizable(True, True) 
 		Button(view_window, text = "Back", font = "30", command = lambda : [user_homepage(usr_name), close_window(view_window)]).pack()
 
-#Function to accept the image from the user and perform ocr and perform api request on the output of OCR
+#Function to accept the image from the user and perform ocr and perform api request on the output of ocr
 def upload_file(usr_name): 
   
 	#Accepting the image file
@@ -253,18 +253,18 @@ def upload_file(usr_name):
 		img = img.save(dest_add)
 
 		#Recognise the charachters in the image
-		OCR_text = OCR.recognise(dest_add)
+		ocr_text = ocr.recognise(dest_add)
 
-		if OCR_text in options:
+		if ocr_text in options:
 			empty_label = Label(user_w, text = "Content already exists for this keyword! Try a different keyword.", font = (100), fg="red")
 			empty_label.pack()
 
 		else:	
 			try:
-				#Fetch content from wikipedia using the keyword from OCR
+				#Fetch content from wikipedia using the keyword from ocr
 				lambda_input = {
 				'user_name': usr_name,
-				'key': OCR_text,
+				'key': ocr_text,
 				'image_path': dest_add
 				}
 				url = "https://6dtradfkv3.execute-api.ap-southeast-1.amazonaws.com/dce/content-management"
