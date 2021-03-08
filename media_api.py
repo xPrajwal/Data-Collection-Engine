@@ -31,7 +31,7 @@ def scrape(target):
         "exsentences": "10",        #How many sentences to return.
         "exlimit": "1",             #How many extracts to return.
         "titles": keyword,          #A list of titles to work on.
-        "formatversion": "2",       #Output formatting(Modern format.)
+        "formatversion": "2",       #Output formatting(Modern format)
         "format": "json",           #The format of the output.
         "explaintext": "1"          #Return extracts as plain text instead of limited HTML.
     }
